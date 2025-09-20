@@ -1,8 +1,8 @@
 ---
 
-<p align="center">──────────────</p>
-<p align="center"><i>"All we have to decide is what to do with the time that is given us."</i></p>
-<p align="center">──────────────</p>
-<p align="center"><sub>— Gandalf</sub></p>
+<p align="center"><span style="color:white">──────────────</span></p>
+<p align="center"><i><span style="color:white">"All we have to decide is what to do with the time that is given us."</span></i></p>
+<p align="center"><span style="color:white">──────────────</span></p>
+<p align="center"><sub><span style="color:white">— Gandalf</span></sub></p>
 
 ---
