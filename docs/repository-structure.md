@@ -65,8 +65,8 @@ and analytics loader.
 receives typed data instead of embedding biography and link content directly.
 
 `src/data/profile.ts` is the source of truth for the name, role, biography,
-portrait, primary action, and social links. Its TypeScript interfaces make
-unsupported or incomplete content changes fail during checks.
+portrait, and primary action. Its TypeScript interfaces make unsupported or
+incomplete content changes fail during checks.
 
 ## Styling
 
@@ -99,6 +99,12 @@ API. Components declare events with `data-analytics-*` attributes and do not cal
 PostHog directly. Keeping that boundary makes it possible to change providers or
 add another destination without rewriting the interface components.
 
+PostHog automatically captures page views and page leaves. Web vitals capture is
+enabled from the PostHog project settings and depends on leaving
+`capture_performance` unset in the client configuration. Regular element
+autocapture, session recording, heatmaps, surveys, person profiles, feature flags,
+and automatic exception capture remain disabled.
+
 ## Deployment flow
 
 Every push to `main` triggers `.github/workflows/deploy.yml`:
@@ -116,7 +122,7 @@ variables; secrets and private API keys must never use an Astro `PUBLIC_` name.
 
 ## Where future changes belong
 
-- Edit personal content or social links in `src/data/profile.ts`.
+- Edit personal content or the primary action in `src/data/profile.ts`.
 - Add a route by creating a file such as `src/pages/projects.astro`.
 - Add reusable interface sections under `src/components/`.
 - Put shared page chrome and metadata behavior under `src/layouts/`.

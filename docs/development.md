@@ -30,11 +30,17 @@ The production site is generated in `dist/`.
 PostHog is loaded only in production builds that define `PUBLIC_POSTHOG_KEY`.
 Local development therefore does not send test traffic by default.
 
-The initial configuration is privacy-conscious and cookieless. It records page
-views, page leaves, web vitals, and the explicitly named `contact_clicked` and
-`social_link_clicked` events. Autocapture, person profiles, session recording,
-surveys, heatmaps, and automatic exception capture are disabled. Web vitals
-capture is controlled by the PostHog project setting.
+The initial configuration is privacy-conscious and cookieless. With the matching
+project settings enabled, it records `$pageview`, `$pageleave`, `$web_vitals`,
+and the `contact_clicked` event from the primary LinkedIn action. The analytics
+module also reserves `social_link_clicked` for future social links. Autocapture,
+person profiles, session recording, surveys, heatmaps, and automatic exception
+capture are disabled.
+
+Web vitals capture is controlled remotely by the PostHog project setting. Do not
+set `capture_performance: false` in `src/lib/analytics.ts`; that client-side
+override also disables `$web_vitals`, regardless of the project setting. Regular
+autocapture can remain disabled because web vitals autocapture is independent.
 
 To activate analytics:
 
@@ -46,8 +52,10 @@ To activate analytics:
 4. Copy the project token and ingestion host from the PostHog web snippet.
 5. In the GitHub repository, open **Settings → Secrets and variables → Actions →
    Variables** and add `PUBLIC_POSTHOG_KEY` and `PUBLIC_POSTHOG_HOST`.
-6. Run the deployment workflow, then confirm a visit appears in PostHog's live
-   events view.
+6. Run the deployment workflow, then open the production site and confirm
+   `$pageview` and `$web_vitals` appear in PostHog's live events view. Web vitals
+   are flushed after a short delay, and INP requires an interaction such as a
+   click or tap.
 
 For a local production-mode verification, copy `.env.example` to `.env`, replace
 the example values, then run:
