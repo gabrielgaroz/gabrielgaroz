@@ -393,27 +393,45 @@ a {
   }
 
   .profile-header {
-    min-height: 36rem;
-    padding: 1.75rem 1.5rem 2rem;
+    min-height: auto;
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .practice-map {
+    margin: 1.25rem 0 0;
+    padding-top: 0.75rem;
   }
 
   .portrait-stage {
-    width: 10.5rem;
-    height: 10.5rem;
-    margin-top: 4.25rem;
+    width: 9rem;
+    height: 9rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .portrait-stage::after {
-    box-shadow: 0 13.7rem 0 var(--color-gold);
+    box-shadow: 0 12.2rem 0 var(--color-gold);
   }
 
   .profile-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
+  }
+
+  .profile-role {
+    margin-top: 0.75rem;
   }
 
   .profile-content {
     min-height: 0;
-    padding: 3rem 1.5rem 2.5rem;
+    padding: 2rem 1.5rem 2.25rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.25rem;
+  }
+
+  .biography p + p {
+    margin-top: 0.55rem;
   }
 
   .primary-action {
