@@ -24,6 +24,8 @@ jobs:
       - name: Install, build, and upload site
         uses: withastro/action@v5
         env:
+          ASTRO_SITE_URL: https://gabrielgaroz.github.io/gabrielgaroz
+          ASTRO_SITE_BASE_PATH: /gabrielgaroz
           PUBLIC_POSTHOG_KEY: ${{ vars.PUBLIC_POSTHOG_KEY }}
           PUBLIC_POSTHOG_HOST: ${{ vars.PUBLIC_POSTHOG_HOST }}
 

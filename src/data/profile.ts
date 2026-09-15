@@ -20,6 +20,8 @@ export interface Profile {
   socialLinks: ProfileLink[];
 }
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 export const profile: Profile = {
   name: "Gabriel Garoz",
   role: "Staff Software Architect — Cloud, Platform & AI",
@@ -31,7 +33,7 @@ export const profile: Profile = {
     "Let’s connect if you’re building cloud-native systems, modernizing infrastructure, or looking for practical platform engineering expertise.",
   ],
   portrait: {
-    src: "/assets/gabriel-garoz.jpg",
+    src: `${basePath}/assets/gabriel-garoz.jpg`,
     alt: "Gabriel Garoz",
   },
   primaryAction: {
