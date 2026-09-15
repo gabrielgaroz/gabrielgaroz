@@ -59,7 +59,7 @@ a {
 .site-shell {
   display: grid;
   min-height: 100svh;
-  padding: clamp(1rem, 4vw, 4rem);
+  padding: clamp(0.75rem, 2vw, 1.5rem);
   place-items: center;
 }
 
@@ -68,7 +68,8 @@ a {
   display: grid;
   grid-template-columns: minmax(17rem, 0.78fr) minmax(22rem, 1.22fr);
   width: min(100%, 68rem);
-  min-height: 42rem;
+  height: min(40rem, calc(100svh - 2rem));
+  min-height: 35.5rem;
   overflow: hidden;
   border: 1px solid rgb(214 166 46 / 50%);
   background: var(--color-parchment);
@@ -131,7 +132,7 @@ a {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: clamp(2rem, 4vw, 3.5rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
   color: var(--color-parchment);
   background:
     linear-gradient(180deg, rgb(255 255 255 / 3%), transparent 28%),
@@ -139,11 +140,8 @@ a {
 }
 
 .profile-kicker {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
   margin: 0;
-  color: rgb(242 235 221 / 67%);
+  color: var(--color-gold-light);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.13em;
@@ -151,17 +149,11 @@ a {
   text-transform: uppercase;
 }
 
-.profile-kicker span {
-  padding-right: 0.65rem;
-  border-right: 1px solid var(--color-gold);
-  color: var(--color-gold-light);
-}
-
 .portrait-stage {
   position: relative;
-  width: 12.5rem;
-  height: 12.5rem;
-  margin: clamp(3rem, 7vh, 5.25rem) auto 2.4rem;
+  width: 11rem;
+  height: 11rem;
+  margin: clamp(2.25rem, 5vh, 3rem) auto 1.75rem;
 }
 
 .portrait-stage::before {
@@ -180,7 +172,7 @@ a {
   height: 0.35rem;
   border-radius: 50%;
   background: var(--color-gold);
-  box-shadow: 0 15.7rem 0 var(--color-gold);
+  box-shadow: 0 14.2rem 0 var(--color-gold);
   content: "";
   transform: translateX(-50%);
 }
@@ -240,14 +232,12 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: auto 0 0;
-  padding: 2.5rem 0 0;
+  padding: 1.5rem 0 0;
   border-top: 1px solid rgb(242 235 221 / 13%);
   list-style: none;
 }
 
 .practice-map li {
-  display: flex;
-  flex-direction: column;
   color: var(--color-parchment);
   font-size: 0.68rem;
   font-weight: 700;
@@ -260,20 +250,11 @@ a {
   border-left: 1px solid rgb(242 235 221 / 13%);
 }
 
-.practice-map span {
-  color: var(--color-gold);
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
 .profile-content {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: clamp(2.5rem, 6vw, 5.5rem) clamp(2rem, 6vw, 5rem) 3rem;
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(2rem, 5vw, 4rem) 2.25rem;
   background:
     linear-gradient(90deg, rgb(38 56 74 / 5%) 1px, transparent 1px) 2rem 0 / 4rem 100%,
     var(--color-parchment);
@@ -281,21 +262,10 @@ a {
 
 .section-heading {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.8rem;
-  margin-bottom: 2rem;
+  margin: 0 0 1.5rem;
   color: var(--color-gold-dark);
-}
-
-.section-heading span {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-style: italic;
-  line-height: 1;
-}
-
-.section-heading p {
-  margin: 0;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -311,8 +281,8 @@ a {
 
 .biography {
   max-width: 35rem;
-  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
-  line-height: 1.66;
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  line-height: 1.55;
 }
 
 .biography p {
@@ -322,8 +292,8 @@ a {
 .biography p:first-child {
   color: var(--color-blue-deep);
   font-family: var(--font-display);
-  font-size: clamp(1.18rem, 2vw, 1.38rem);
-  line-height: 1.45;
+  font-size: clamp(1.12rem, 1.8vw, 1.28rem);
+  line-height: 1.4;
 }
 
 .biography p:first-child::first-letter {
@@ -336,7 +306,7 @@ a {
 }
 
 .biography p + p {
-  margin-top: 0.9rem;
+  margin-top: 0.65rem;
 }
 
 .profile-footer {
@@ -345,7 +315,7 @@ a {
   justify-content: center;
   gap: 1rem;
   margin-top: auto;
-  padding-top: 2.5rem;
+  padding-top: 1.75rem;
 }
 
 .primary-action {
@@ -379,36 +349,7 @@ a {
   fill: currentColor;
 }
 
-.social-links {
-  display: flex;
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.9rem;
-  height: 2.9rem;
-  border: 1px solid rgb(38 56 74 / 22%);
-  border-radius: 50%;
-  color: var(--color-blue);
-  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.social-link:hover {
-  border-color: var(--color-gold-dark);
-  color: var(--color-gold-dark);
-  transform: rotate(-5deg);
-}
-
-.social-link svg {
-  width: 1.8rem;
-  height: 1.8rem;
-  fill: currentColor;
-}
-
-.primary-action:focus-visible,
-.social-link:focus-visible {
+.primary-action:focus-visible {
   outline: 0.1875rem solid var(--color-blue);
   outline-offset: 0.1875rem;
   box-shadow: 0 0 0 0.375rem var(--color-gold-light);
@@ -425,6 +366,7 @@ a {
   }
 
   .profile-card {
+    height: auto;
     grid-template-columns: 1fr;
     max-width: 38rem;
   }
@@ -434,7 +376,7 @@ a {
   }
 
   .profile-content {
-    min-height: 39rem;
+    min-height: 37rem;
   }
 }
 
@@ -454,10 +396,6 @@ a {
     padding: 1.75rem 1.5rem 2rem;
   }
 
-  .profile-kicker {
-    justify-content: center;
-  }
-
   .portrait-stage {
     width: 10.5rem;
     height: 10.5rem;
@@ -475,10 +413,6 @@ a {
   .profile-content {
     min-height: 0;
     padding: 3rem 1.5rem 2.5rem;
-  }
-
-  .profile-footer {
-    flex-wrap: wrap;
   }
 
   .primary-action {
