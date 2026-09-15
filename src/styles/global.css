@@ -158,6 +158,7 @@ a {
 .social-links {
   width: min(27.5rem, calc(100% - 2.5rem));
   margin: 1.875rem auto 0;
+  text-align: center;
 }
 
 .social-link {
