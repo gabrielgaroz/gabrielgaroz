@@ -1,0 +1,15 @@
+---
+import ProfileCard from "../components/ProfileCard.astro";
+import { profile } from "../data/profile";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Gabriel Garoz | Staff Software Architect — Cloud, Platform & AI";
+const description =
+  "Staff software architect and hands-on engineer specializing in cloud infrastructure, platform engineering, distributed software systems, and applied AI automation.";
+---
+
+<BaseLayout title={title} description={description} image={profile.portrait.src}>
+  <main class="site-shell">
+    <ProfileCard profile={profile} />
+  </main>
+</BaseLayout>

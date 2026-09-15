@@ -1,0 +1,12 @@
+# Generated files
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Local tooling
+.DS_Store
+.env
+.env.*
+!.env.example

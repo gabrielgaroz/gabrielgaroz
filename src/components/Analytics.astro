@@ -1,0 +1,14 @@
+<script>
+  import { bindAnalyticsClicks, initializeAnalytics } from "../lib/analytics";
+
+  const projectKey = import.meta.env.PUBLIC_POSTHOG_KEY;
+
+  if (import.meta.env.PROD && projectKey) {
+    initializeAnalytics({
+      projectKey,
+      apiHost:
+        import.meta.env.PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+    });
+    bindAnalyticsClicks();
+  }
+</script>
