@@ -36,7 +36,6 @@ export function initializeAnalytics(config: AnalyticsConfig): void {
         capture_heatmaps: false,
         capture_pageleave: true,
         capture_pageview: "history_change",
-        capture_performance: false,
         cookieless_mode: "always",
         disable_session_recording: true,
         disable_surveys: true,

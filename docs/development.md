@@ -31,20 +31,22 @@ PostHog is loaded only in production builds that define `PUBLIC_POSTHOG_KEY`.
 Local development therefore does not send test traffic by default.
 
 The initial configuration is privacy-conscious and cookieless. It records page
-views, page leaves, and the explicitly named `contact_clicked` and
+views, page leaves, web vitals, and the explicitly named `contact_clicked` and
 `social_link_clicked` events. Autocapture, person profiles, session recording,
-surveys, heatmaps, performance collection, and automatic exception capture are
-disabled.
+surveys, heatmaps, and automatic exception capture are disabled. Web vitals
+capture is controlled by the PostHog project setting.
 
 To activate analytics:
 
 1. Create a PostHog Cloud project in the US or EU region.
 2. In the PostHog project settings, enable cookieless web analytics. PostHog
    discards cookieless events unless this project setting is enabled.
-3. Copy the project token and ingestion host from the PostHog web snippet.
-4. In the GitHub repository, open **Settings → Secrets and variables → Actions →
+3. In the PostHog Web analytics settings, enable web vitals autocapture for CLS,
+   FCP, LCP, and INP.
+4. Copy the project token and ingestion host from the PostHog web snippet.
+5. In the GitHub repository, open **Settings → Secrets and variables → Actions →
    Variables** and add `PUBLIC_POSTHOG_KEY` and `PUBLIC_POSTHOG_HOST`.
-5. Run the deployment workflow, then confirm a visit appears in PostHog's live
+6. Run the deployment workflow, then confirm a visit appears in PostHog's live
    events view.
 
 For a local production-mode verification, copy `.env.example` to `.env`, replace
