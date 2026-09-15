@@ -1,4 +1,4 @@
-import type { PostHog } from "posthog-js/dist/module.slim";
+import type { PostHog } from "posthog-js";
 
 const analyticsEventNames = [
   "contact_clicked",
@@ -25,7 +25,7 @@ export function initializeAnalytics(config: AnalyticsConfig): void {
     return;
   }
 
-  clientPromise = import("posthog-js/dist/module.slim").then(
+  clientPromise = import("posthog-js").then(
     ({ default: posthog }) => {
       posthog.init(config.projectKey, {
         api_host: config.apiHost,
@@ -35,7 +35,7 @@ export function initializeAnalytics(config: AnalyticsConfig): void {
         capture_exceptions: false,
         capture_heatmaps: false,
         capture_pageleave: true,
-        capture_pageview: true,
+        capture_pageview: "history_change",
         capture_performance: false,
         cookieless_mode: "always",
         disable_session_recording: true,
