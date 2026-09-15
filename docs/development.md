@@ -4,7 +4,7 @@ This site is built with Astro and deployed as static files to GitHub Pages.
 
 ## Local development
 
-The build toolchain is pinned to Node.js 24.21.0 and npm 11.19.0. Use a version
+The build toolchain is pinned to Node.js 26.8.2 and npm 11.19.1. Use a version
 manager that reads `.node-version`, then install exactly what is recorded in the
 lockfile:
 
