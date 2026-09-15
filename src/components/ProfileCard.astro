@@ -9,58 +9,84 @@ const { profile } = Astro.props;
 ---
 
 <article class="profile-card">
+  <div class="architectural-grid" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
   <header class="profile-header">
-    <img
-      class="profile-portrait"
-      src={profile.portrait.src}
-      alt={profile.portrait.alt}
-      width="120"
-      height="120"
-      decoding="async"
-      fetchpriority="high"
-    />
-    <h1>{profile.name}</h1>
-    <p class="profile-role">{profile.role}</p>
+    <p class="profile-kicker"><span>Field note</span> Systems that endure</p>
+
+    <div class="portrait-stage">
+      <span class="portrait-orbit" aria-hidden="true"></span>
+      <img
+        class="profile-portrait"
+        src={profile.portrait.src}
+        alt={profile.portrait.alt}
+        width="176"
+        height="176"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="profile-identity">
+      <p class="profile-discipline" aria-hidden="true">Architecture · Engineering</p>
+      <h1>{profile.name}</h1>
+      <p class="profile-role">{profile.role}</p>
+    </div>
+
+    <ol class="practice-map" aria-label="Areas of practice">
+      <li><span>01</span> Cloud</li>
+      <li><span>02</span> Platform</li>
+      <li><span>03</span> AI</li>
+    </ol>
   </header>
 
   <div class="profile-content">
-    <a
-      class="primary-action"
-      href={profile.primaryAction.url}
-      target="_blank"
-      rel="me noopener noreferrer"
-      aria-label={profile.primaryAction.accessibleLabel}
-      data-analytics-event="contact_clicked"
-      data-analytics-destination="linkedin"
-      data-analytics-placement="primary_action"
-    >
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <path d="M3 5.75A2.75 2.75 0 0 1 5.75 3h12.5A2.75 2.75 0 0 1 21 5.75v12.5A2.75 2.75 0 0 1 18.25 21H5.75A2.75 2.75 0 0 1 3 18.25V5.75Zm2.25-.75c-.1 0-.2.01-.29.04l7.04 6.2 7.04-6.2a.75.75 0 0 0-.29-.04H5.25Zm13.9 2.23-6.49 5.72a1 1 0 0 1-1.32 0L4.85 7.23v11.02c0 .5.4.9.9.9h12.5c.5 0 .9-.4.9-.9V7.23Z" />
-      </svg>
-      <span>{profile.primaryAction.label}</span>
-    </a>
+    <div class="section-heading" aria-hidden="true">
+      <span>01</span>
+      <p>Perspective</p>
+    </div>
 
     <section class="biography" aria-label="About Gabriel">
       {profile.biography.map((paragraph) => <p>{paragraph}</p>)}
     </section>
 
-    <nav class="social-links" aria-label="Social profiles">
-      {profile.socialLinks.map((link) => (
-        <a
-          class="social-link"
-          href={link.url}
-          target="_blank"
-          rel="me noopener noreferrer"
-          aria-label={`Visit Gabriel Garoz on ${link.label}`}
-          data-analytics-event="social_link_clicked"
-          data-analytics-destination={link.platform}
-          data-analytics-placement="social_links"
-        >
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM9.47 16.65H7.4V10h2.07v6.65ZM8.44 9.1a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm9.3 7.55h-2.06v-3.24c0-.77-.02-1.77-1.08-1.77-1.08 0-1.25.84-1.25 1.71v3.3H11.3V10h1.98v.91h.03a2.17 2.17 0 0 1 1.95-1.07c2.09 0 2.48 1.37 2.48 3.16v3.65Z" />
-          </svg>
-        </a>
-      ))}
-    </nav>
+    <footer class="profile-footer">
+      <a
+        class="primary-action"
+        href={profile.primaryAction.url}
+        target="_blank"
+        rel="me noopener noreferrer"
+        aria-label={profile.primaryAction.accessibleLabel}
+        data-analytics-event="contact_clicked"
+        data-analytics-destination="linkedin"
+        data-analytics-placement="primary_action"
+      >
+        <span>{profile.primaryAction.label}</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M7.8 5.4 14.4 12l-6.6 6.6 1.8 1.8 8.4-8.4-8.4-8.4-1.8 1.8Z" />
+        </svg>
+      </a>
+
+      <nav class="social-links" aria-label="Social profiles">
+        {profile.socialLinks.map((link) => (
+          <a
+            class="social-link"
+            href={link.url}
+            target="_blank"
+            rel="me noopener noreferrer"
+            aria-label={`Visit Gabriel Garoz on ${link.label}`}
+            data-analytics-event="social_link_clicked"
+            data-analytics-destination={link.platform}
+            data-analytics-placement="social_links"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM9.47 16.65H7.4V10h2.07v6.65ZM8.44 9.1a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm9.3 7.55h-2.06v-3.24c0-.77-.02-1.77-1.08-1.77-1.08 0-1.25.84-1.25 1.71v3.3H11.3V10h1.98v.91h.03a2.17 2.17 0 0 1 1.95-1.07c2.09 0 2.48 1.37 2.48 3.16v3.65Z" />
+            </svg>
+          </a>
+        ))}
+      </nav>
+    </footer>
   </div>
 </article>
