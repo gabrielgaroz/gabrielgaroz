@@ -62,22 +62,13 @@ components.
 
 ## Project structure
 
-- `src/pages/` defines routes.
-- `src/layouts/` owns shared document structure and metadata.
-- `src/components/` contains reusable interface components.
-- `src/data/` contains typed site content.
-- `src/styles/` contains shared design tokens and global styles.
-- `public/` contains files copied directly to the deployed site.
+See [Repository structure](repository-structure.md) for the complete directory
+map, application flow, ownership boundaries, and extension points.
 
 Add a file such as `src/pages/projects.astro` to create a new route. Interactive components can be added using Astro components or a UI framework integration when a feature genuinely needs client-side state.
 
 ## Deployment
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`. The workflow builds the Astro project and deploys the generated static artifact to GitHub Pages.
-
-Until the custom domain is moved from About.me, the deployment workflow sets
-`ASTRO_SITE_URL` and `ASTRO_SITE_BASE_PATH` for the temporary project URL at
-`https://gabrielgaroz.github.io/gabrielgaroz/`. Remove those two overrides when
-the GitHub Pages custom domain and DNS cutover are completed.
 
 The custom domain is declared in `public/CNAME` and in `astro.config.mjs`. GitHub Pages must use **GitHub Actions** as its deployment source, and the domain's DNS records must point to GitHub Pages before HTTPS can be enabled.
