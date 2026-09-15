@@ -4,10 +4,12 @@ This site is built with Astro and deployed as static files to GitHub Pages.
 
 ## Local development
 
-Requirements: Node.js 22.12 or newer.
+The build toolchain is pinned to Node.js 24.21.0 and npm 11.19.0. Use a version
+manager that reads `.node-version`, then install exactly what is recorded in the
+lockfile:
 
 ```sh
-npm install
+npm ci --ignore-scripts
 npm run dev
 ```
 
@@ -72,3 +74,20 @@ Add a file such as `src/pages/projects.astro` to create a new route. Interactive
 Pushing to `main` triggers `.github/workflows/deploy.yml`. The workflow builds the Astro project and deploys the generated static artifact to GitHub Pages.
 
 The custom domain is declared in `public/CNAME` and in `astro.config.mjs`. GitHub Pages must use **GitHub Actions** as its deployment source, and the domain's DNS records must point to GitHub Pages before HTTPS can be enabled.
+
+## Reproducibility and supply-chain controls
+
+- Direct npm dependencies use exact versions, and all transitive packages are
+  fixed by `package-lock.json` with registry integrity hashes.
+- CI installs with `npm ci --ignore-scripts`; it cannot update the lockfile and
+  does not execute dependency lifecycle scripts.
+- Node.js, npm, and the Ubuntu runner family are explicit rather than floating.
+- Every GitHub Action is pinned to a full commit SHA. The adjacent version
+  comment is informational and must not replace the SHA.
+- Build and deploy jobs receive separate minimum permissions. The build job
+  cannot deploy, and checkout does not retain credentials.
+
+Updates are intentional changes: update the exact version and lockfile together,
+review the diff, run the quality checks, and commit both. GitHub-hosted runner
+images and the two repository analytics variables remain external build inputs;
+they cannot be made immutable from within this repository.

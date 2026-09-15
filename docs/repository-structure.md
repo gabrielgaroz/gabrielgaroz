@@ -29,6 +29,7 @@ deployment separate so each can evolve without requiring unrelated changes.
 │   ├── pages/                  # File-based routes
 │   └── styles/                 # Site-wide design tokens and CSS
 ├── .env.example                # Example local analytics configuration
+├── .node-version               # Exact Node.js version used locally and in CI
 ├── astro.config.mjs            # Site URL, base path, and static output settings
 ├── package.json                # Dependencies, Node requirement, and npm scripts
 ├── package-lock.json           # Reproducible dependency versions
@@ -103,9 +104,11 @@ add another destination without rewriting the interface components.
 Every push to `main` triggers `.github/workflows/deploy.yml`:
 
 1. GitHub checks out the repository.
-2. the Astro action installs dependencies and builds the static site;
-3. the generated artifact is uploaded;
-4. GitHub Pages deploys it to `gabrielgaroz.com`.
+2. an exact Node.js and npm toolchain is installed;
+3. lifecycle-script-free `npm ci` restores the locked dependency graph;
+4. Astro type-checks and builds the static site;
+5. the generated artifact is uploaded;
+6. GitHub Pages deploys it to `gabrielgaroz.com`.
 
 The workflow reads `PUBLIC_POSTHOG_KEY` and `PUBLIC_POSTHOG_HOST` from GitHub
 Actions repository variables. Public browser configuration belongs in those
