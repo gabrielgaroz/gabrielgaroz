@@ -17,7 +17,7 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export const profile: Profile = {
   name: "Gabriel Garoz",
-  role: "Staff Software Architect — Cloud, Platform & AI",
+  role: "Staff Software Architect",
   biography: [
     "I’m Gabriel, a Staff Software Architect with 13+ years in the technology industry. With a foundation in software engineering, my work has evolved toward cloud infrastructure modernization, Kubernetes, Google Cloud, platform engineering, DevOps, and AI-driven automation.",
     "I’ve contributed to large-scale cloud modernization initiatives for global enterprises, helping design and build the platform foundations behind secure, reliable, cloud-native systems.",
