@@ -110,6 +110,12 @@ Add a file such as `src/pages/projects.astro` to create a new route. Interactive
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`. The workflow builds the Astro project and deploys the generated static artifact to GitHub Pages.
 
+Pull requests targeting `main` run the same toolchain verification, checks, and
+build, and upload the resulting Pages artifact. The deploy job is skipped for
+pull requests. Feature-branch pushes do not publish hosted previews; use the
+local development or production preview server before merging. The merged
+`main` commit is built again and deployed by its own workflow run.
+
 The custom domain is declared in `public/CNAME` and in `astro.config.mjs`. GitHub Pages must use **GitHub Actions** as its deployment source, and the domain's DNS records must point to GitHub Pages before HTTPS can be enabled.
 
 ## Reproducibility and supply-chain controls

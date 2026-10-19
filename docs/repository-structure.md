@@ -28,6 +28,7 @@ deployment separate so each can evolve without requiring unrelated changes.
 │   ├── lib/                    # Provider-independent browser utilities
 │   ├── pages/                  # File-based routes
 │   └── styles/                 # Site-wide design tokens and CSS
+├── README.md                   # Project overview and documentation entry point
 ├── .env.example                # Example local analytics configuration
 ├── .node-version               # Exact Node.js version used locally and in CI
 ├── astro.config.mjs            # Site URL, base path, and static output settings
@@ -46,14 +47,14 @@ The home page is assembled in this order:
 ```text
 src/pages/index.astro (English) / src/pages/es/index.astro (Spanish)
   └── src/components/ProfilePage.astro
-    └── src/layouts/BaseLayout.astro
-      ├── document metadata and structured data
-      ├── src/components/ProfileCard.astro
-      │   ├── src/components/LanguageSwitcher.astro
-      │   └── content from src/data/profile.ts and src/data/localization.ts
-      ├── src/styles/global.css
-      └── src/components/Analytics.astro
-          └── src/lib/analytics.ts
+      └── src/layouts/BaseLayout.astro
+          ├── document metadata and structured data
+          ├── src/components/ProfileCard.astro
+          │   ├── src/components/LanguageSwitcher.astro
+          │   └── content from src/data/profile.ts and src/data/localization.ts
+          ├── src/styles/global.css
+          └── src/components/Analytics.astro
+              └── src/lib/analytics.ts
 ```
 
 The two route entry points explicitly select their language. `ProfilePage.astro`
