@@ -25,6 +25,32 @@ npm run preview
 
 The production site is generated in `dist/`.
 
+## Languages
+
+English is always served at `/`; Spanish is available at `/es/`. Visitors choose
+the language through the **English / Español** navigation. Both pages are
+prerendered HTML and the switch works without JavaScript. The site does not use
+browser language, location, cookies, or saved preferences to redirect visitors.
+Returning to `/` always shows English.
+
+Astro's built-in i18n configuration sets `en` as the unprefixed default locale.
+Language links are generated with `astro:i18n` so they also respect an optional
+`ASTRO_SITE_BASE_PATH`. Trailing slashes match GitHub Pages directory URLs.
+
+The English profile content lives in `src/data/profile.ts`. Spanish content,
+translated interface labels, and metadata for both languages live in
+`src/data/localization.ts`. Both routes render the same `ProfilePage` and
+`ProfileCard` components. Update both translations when changing profile copy.
+
+Each page has its own `lang`, canonical URL, translated metadata and structured
+data, reciprocal `hreflang` links for `en` and `es`, and an `x-default` link to
+English. Language names appear in their own languages, and the active language
+is identified with `aria-current="page"`.
+
+When validating changes, check both routes, use the switch in both directions,
+and confirm that requesting `/` with a Spanish `Accept-Language` header still
+returns English. Check `dist/index.html` and `dist/es/index.html` after building.
+
 ## Analytics
 
 PostHog is loaded only in production builds that define `PUBLIC_POSTHOG_KEY`.

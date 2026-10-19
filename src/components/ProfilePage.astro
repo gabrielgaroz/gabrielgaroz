@@ -1,0 +1,18 @@
+---
+import { localizedContent, type Locale } from "../data/localization";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProfileCard from "./ProfileCard.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const content = localizedContent[locale];
+---
+
+<BaseLayout locale={locale} content={content}>
+  <main class="site-shell">
+    <ProfileCard locale={locale} profile={content.profile} labels={content.labels} />
+  </main>
+</BaseLayout>

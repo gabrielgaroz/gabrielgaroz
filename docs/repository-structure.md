@@ -44,22 +44,27 @@ committed. Local `.env` files are also ignored.
 The home page is assembled in this order:
 
 ```text
-src/pages/index.astro
-  └── src/layouts/BaseLayout.astro
+src/pages/index.astro (English) / src/pages/es/index.astro (Spanish)
+  └── src/components/ProfilePage.astro
+    └── src/layouts/BaseLayout.astro
       ├── document metadata and structured data
       ├── src/components/ProfileCard.astro
-      │   └── content from src/data/profile.ts
+      │   ├── src/components/LanguageSwitcher.astro
+      │   └── content from src/data/profile.ts and src/data/localization.ts
       ├── src/styles/global.css
       └── src/components/Analytics.astro
           └── src/lib/analytics.ts
 ```
 
-`src/pages/index.astro` is the route entry point. It supplies page-specific SEO
-text, selects the shared layout, and composes the profile component.
+The two route entry points explicitly select their language. `ProfilePage.astro`
+loads the matching typed content and composes the shared layout and profile.
+English remains at the root regardless of the visitor's location or browser
+language; Spanish is selected explicitly through the language navigation.
 
 `src/layouts/BaseLayout.astro` owns the common HTML document, canonical URL,
 Open Graph and Twitter metadata, JSON-LD person data, favicon, global stylesheet,
-and analytics loader.
+and analytics loader. It also sets the document language and emits reciprocal
+language-alternate links, with English as `x-default`.
 
 `src/components/ProfileCard.astro` renders the visible profile interface. It
 receives typed data instead of embedding biography and link content directly.
@@ -67,6 +72,10 @@ receives typed data instead of embedding biography and link content directly.
 `src/data/profile.ts` is the source of truth for the name, role, biography,
 portrait, and primary action. Its TypeScript interfaces make unsupported or
 incomplete content changes fail during checks.
+
+`src/data/localization.ts` defines the supported locales, Spanish profile copy,
+interface labels, and translated metadata. `LanguageSwitcher.astro` uses Astro's
+i18n URL helpers for accessible links that work without JavaScript.
 
 ## Styling
 
@@ -123,6 +132,7 @@ variables; secrets and private API keys must never use an Astro `PUBLIC_` name.
 ## Where future changes belong
 
 - Edit personal content or the primary action in `src/data/profile.ts`.
+- Update Spanish copy and localized labels/metadata in `src/data/localization.ts`.
 - Add a route by creating a file such as `src/pages/projects.astro`.
 - Add reusable interface sections under `src/components/`.
 - Put shared page chrome and metadata behavior under `src/layouts/`.

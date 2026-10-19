@@ -1,11 +1,15 @@
 ---
 import type { Profile } from "../data/profile";
+import type { Locale, ProfileLabels } from "../data/localization";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 interface Props {
   profile: Profile;
+  locale: Locale;
+  labels: ProfileLabels;
 }
 
-const { profile } = Astro.props;
+const { profile, locale, labels } = Astro.props;
 ---
 
 <article class="profile-card">
@@ -14,7 +18,8 @@ const { profile } = Astro.props;
   </div>
 
   <header class="profile-header">
-    <p class="profile-kicker">Designing systems that endure</p>
+    <LanguageSwitcher locale={locale} label={labels.languageLabel} />
+    <p class="profile-kicker">{labels.kicker}</p>
 
     <div class="portrait-stage">
       <span class="portrait-orbit" aria-hidden="true"></span>
@@ -30,24 +35,24 @@ const { profile } = Astro.props;
     </div>
 
     <div class="profile-identity">
-      <p class="profile-discipline" aria-hidden="true">Engineering · Architecture</p>
+      <p class="profile-discipline" aria-hidden="true">{labels.discipline}</p>
       <h1>{profile.name}</h1>
       <p class="profile-role">{profile.role}</p>
       <p class="profile-introduction">{profile.introduction}</p>
     </div>
 
-    <ul class="practice-map" aria-label="Areas of focus">
+    <ul class="practice-map" aria-label={labels.focusHeading}>
       {profile.practices.map((practice) => <li>{practice}</li>)}
     </ul>
   </header>
 
   <div class="profile-content">
-    <section class="biography" aria-label="About Gabriel">
+    <section class="biography" aria-label={labels.aboutLabel}>
       {profile.biography.map((paragraph) => <p>{paragraph}</p>)}
     </section>
 
     <section class="focus-areas" aria-labelledby="focus-heading">
-      <h2 class="section-heading" id="focus-heading">Areas of focus</h2>
+      <h2 class="section-heading" id="focus-heading">{labels.focusHeading}</h2>
       <ul class="focus-list">
         {profile.focusAreas.map((area) => (
           <li>

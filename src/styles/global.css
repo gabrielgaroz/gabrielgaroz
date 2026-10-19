@@ -149,6 +149,41 @@ a {
   text-transform: uppercase;
 }
 
+.language-switcher {
+  display: flex;
+  align-self: center;
+  margin: 0 0 1.25rem;
+  padding: 0.2rem;
+  border: 1px solid rgb(242 235 221 / 30%);
+  border-radius: 0.25rem;
+}
+
+.language-switcher a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.125rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+
+.language-switcher a[aria-current="page"] {
+  color: var(--color-blue-deep);
+  background: var(--color-gold-light);
+}
+
+.language-switcher a:hover {
+  text-decoration: underline;
+}
+
+.language-switcher a:focus-visible {
+  outline: 0.1875rem solid var(--color-gold-light);
+  outline-offset: 0.125rem;
+}
+
 .portrait-stage {
   --portrait-size: 11rem;
   --portrait-ring-offset: 2rem;

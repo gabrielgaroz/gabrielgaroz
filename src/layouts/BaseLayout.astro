@@ -1,45 +1,39 @@
 ---
 import Analytics from "../components/Analytics.astro";
-import { profile } from "../data/profile";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { locales, type Locale, type LocalizedContent } from "../data/localization";
 import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description: string;
-  image: string;
+  locale: Locale;
+  content: LocalizedContent;
 }
 
-const { title, description, image } = Astro.props;
+const { locale, content } = Astro.props;
+const { profile, metadata } = content;
+const { title, description } = metadata;
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
-const imageUrl = new URL(image, Astro.site ?? Astro.url.origin);
+const siteUrl = Astro.site ?? Astro.url.origin;
+const canonicalUrl = new URL(getRelativeLocaleUrl(locale), siteUrl);
+const defaultUrl = new URL(getRelativeLocaleUrl("en"), siteUrl);
+const imageUrl = new URL(profile.portrait.src, siteUrl);
+const ogLocales: Record<Locale, string> = { en: "en_US", es: "es_GT" };
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Gabriel Garoz",
+  name: profile.name,
   url: canonicalUrl.toString(),
   image: imageUrl.toString(),
   description,
-  jobTitle: "Software Engineer & Architect",
+  jobTitle: metadata.jobTitle,
   sameAs: [profile.linkedInUrl],
-  knowsAbout: [
-    "AI and automation",
-    "Website development",
-    "Web application development",
-    "Software architecture",
-    "Cloud infrastructure",
-    "Kubernetes",
-    "Google Cloud",
-    "Platform engineering",
-    "DevOps",
-    "AI-driven automation",
-  ],
+  knowsAbout: metadata.knowsAbout,
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,9 +42,17 @@ const structuredData = {
     <meta name="theme-color" content="#26384a" />
 
     <link rel="canonical" href={canonicalUrl} />
+    {locales.map((language) => (
+      <link rel="alternate" hreflang={language} href={new URL(getRelativeLocaleUrl(language), siteUrl)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={defaultUrl} />
     <link rel="icon" href={`${basePath}/favicon.svg`} type="image/svg+xml" />
 
     <meta property="og:type" content="profile" />
+    <meta property="og:locale" content={ogLocales[locale]} />
+    {locales.filter((language) => language !== locale).map((language) => (
+      <meta property="og:locale:alternate" content={ogLocales[language]} />
+    ))}
     <meta property="og:site_name" content="Gabriel Garoz" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
