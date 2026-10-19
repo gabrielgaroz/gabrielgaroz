@@ -4,7 +4,7 @@ export interface Profile {
   introduction: string;
   practices: string[];
   biography: string[];
-  services: {
+  focusAreas: {
     title: string;
     description: string;
   }[];
@@ -17,6 +17,11 @@ export interface Profile {
     url: string;
     accessibleLabel: string;
   };
+  secondaryAction: {
+    label: string;
+    url: string;
+    accessibleLabel: string;
+  };
   linkedInUrl: string;
 }
 
@@ -25,20 +30,20 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 export const profile: Profile = {
   name: "Gabriel Garoz",
   role: "Software Engineering & Architecture",
-  introduction: "I design and build websites, applications, and practical AI solutions.",
-  practices: ["AI & Automation", "Websites", "Applications", "Cloud", "Platforms"],
+  introduction: "My work spans AI and automation, websites and applications, software architecture, and cloud platforms.",
+  practices: ["AI & Automation", "Websites", "Applications", "Cloud & Platforms"],
   biography: [
-    "I’m Gabriel, a software engineer and architect with 13+ years in the technology industry. I help businesses and teams turn ideas into useful software, improve existing products, and build systems that can grow with them.",
-    "I’ve contributed to large-scale cloud modernization initiatives for global enterprises, bringing hands-on engineering experience and architectural thinking to projects of different sizes.",
+    "I’m Gabriel, a software engineer and architect currently working at PayPal, with 13+ years in the technology industry.",
+    "My experience spans application development and large-scale cloud modernization for global enterprises. I bring hands-on engineering experience and architectural thinking to building secure, reliable software systems.",
   ],
-  services: [
+  focusAreas: [
     {
       title: "AI & Automation",
-      description: "AI features, integrations, and workflows that reduce manual work.",
+      description: "Applied AI, integrations, and automation for practical workflows.",
     },
     {
       title: "Websites & Applications",
-      description: "Business websites, customer portals, dashboards, and custom web applications.",
+      description: "Websites, web applications, customer portals, and integrations.",
     },
     {
       title: "Software Architecture",
@@ -46,7 +51,7 @@ export const profile: Profile = {
     },
     {
       title: "Cloud & Platforms",
-      description: "Cloud infrastructure, deployment automation, and reliable operations.",
+      description: "Cloud infrastructure, platform engineering, deployment automation, and reliable systems.",
     },
   ],
   portrait: {
@@ -54,9 +59,14 @@ export const profile: Profile = {
     alt: "Gabriel Garoz",
   },
   primaryAction: {
-    label: "Let’s discuss your project",
+    label: "Connect on LinkedIn",
+    url: "https://www.linkedin.com/in/gabrielgaroz/",
+    accessibleLabel: "Connect with Gabriel Garoz on LinkedIn",
+  },
+  secondaryAction: {
+    label: "Email",
     url: "mailto:dev@gabrielgaroz.com",
-    accessibleLabel: "Email Gabriel Garoz to discuss your project",
+    accessibleLabel: "Email Gabriel Garoz",
   },
   linkedInUrl: "https://www.linkedin.com/in/gabrielgaroz/",
 };

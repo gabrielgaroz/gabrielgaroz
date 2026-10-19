@@ -319,15 +319,15 @@ a {
   margin-top: 0.65rem;
 }
 
-.services {
+.focus-areas {
   margin-top: 1.75rem;
 }
 
-.services .section-heading {
+.focus-areas .section-heading {
   margin-bottom: 1rem;
 }
 
-.service-list {
+.focus-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem 1.5rem;
@@ -336,13 +336,13 @@ a {
   list-style: none;
 }
 
-.service-list h3 {
+.focus-list h3 {
   margin: 0 0 0.35rem;
   font-size: 0.88rem;
   line-height: 1.4;
 }
 
-.service-list p {
+.focus-list p {
   margin: 0;
   font-size: 0.85rem;
   line-height: 1.5;
@@ -485,7 +485,7 @@ a {
     width: min(100%, 20rem);
   }
 
-  .service-list {
+  .focus-list {
     grid-template-columns: 1fr;
   }
 }
