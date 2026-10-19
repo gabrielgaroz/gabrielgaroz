@@ -32,8 +32,8 @@ Local development therefore does not send test traffic by default.
 
 The initial configuration is privacy-conscious and cookieless. With the matching
 project settings enabled, it records `$pageview`, `$pageleave`, `$web_vitals`,
-and the `contact_clicked` event from the primary LinkedIn action. The analytics
-module also reserves `social_link_clicked` for future social links. Autocapture,
+and the `contact_clicked` event from the primary email action. The secondary
+LinkedIn link records `social_link_clicked`. Autocapture,
 person profiles, session recording, surveys, heatmaps, and automatic exception
 capture are disabled.
 

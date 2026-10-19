@@ -1,5 +1,6 @@
 ---
 import Analytics from "../components/Analytics.astro";
+import { profile } from "../data/profile";
 import "../styles/global.css";
 
 interface Props {
@@ -20,9 +21,13 @@ const structuredData = {
   url: canonicalUrl.toString(),
   image: imageUrl.toString(),
   description,
-  jobTitle: "Staff Software Architect — Cloud, Platform & AI",
-  sameAs: ["https://www.linkedin.com/in/gabrielgaroz/"],
+  jobTitle: "Software Engineer & Architect",
+  sameAs: [profile.linkedInUrl],
   knowsAbout: [
+    "AI and automation",
+    "Website development",
+    "Web application development",
+    "Software architecture",
     "Cloud infrastructure",
     "Kubernetes",
     "Google Cloud",
