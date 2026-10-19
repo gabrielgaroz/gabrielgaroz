@@ -33,7 +33,7 @@ export const profile: Profile = {
   introduction: "My work spans AI and automation, websites and applications, software architecture, and cloud platforms.",
   practices: ["AI & Automation", "Websites", "Applications", "Cloud & Platforms"],
   biography: [
-    "I’m Gabriel, a software engineer and architect currently working at PayPal, with 13+ years in the technology industry.",
+    "I’m Gabriel, a software engineer and architect with 13+ years in the technology industry.",
     "My experience spans application development and large-scale cloud modernization for global enterprises. I bring hands-on engineering experience and architectural thinking to building secure, reliable software systems.",
   ],
   focusAreas: [
