@@ -68,8 +68,7 @@ a {
   display: grid;
   grid-template-columns: minmax(17rem, 0.78fr) minmax(22rem, 1.22fr);
   width: min(100%, 68rem);
-  height: min(40rem, calc(100svh - 2rem));
-  min-height: 35.5rem;
+  min-height: 40rem;
   overflow: hidden;
   border: 1px solid rgb(214 166 46 / 50%);
   background: var(--color-parchment);
@@ -148,6 +147,41 @@ a {
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
+}
+
+.language-switcher {
+  display: flex;
+  align-self: center;
+  margin: 0 0 1.25rem;
+  padding: 0.2rem;
+  border: 1px solid rgb(242 235 221 / 30%);
+  border-radius: 0.25rem;
+}
+
+.language-switcher a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.125rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+
+.language-switcher a[aria-current="page"] {
+  color: var(--color-blue-deep);
+  background: var(--color-gold-light);
+}
+
+.language-switcher a:hover {
+  text-decoration: underline;
+}
+
+.language-switcher a:focus-visible {
+  outline: 0.1875rem solid var(--color-gold-light);
+  outline-offset: 0.125rem;
 }
 
 .portrait-stage {
@@ -233,8 +267,10 @@ a {
 }
 
 .practice-map {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
   margin: auto 0 0;
   padding: 1.5rem 0 0;
   border-top: 1px solid rgb(242 235 221 / 13%);
@@ -250,8 +286,13 @@ a {
   text-transform: uppercase;
 }
 
-.practice-map li + li {
-  border-left: 1px solid rgb(242 235 221 / 13%);
+.profile-introduction {
+  max-width: 19rem;
+  margin: 1rem auto 1.75rem;
+  color: var(--color-parchment);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  text-align: center;
 }
 
 .profile-content {
@@ -313,9 +354,39 @@ a {
   margin-top: 0.65rem;
 }
 
+.focus-areas {
+  margin-top: 1.75rem;
+}
+
+.focus-areas .section-heading {
+  margin-bottom: 1rem;
+}
+
+.focus-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.focus-list h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.focus-list p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
 .profile-footer {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   gap: 1rem;
   margin-top: auto;
@@ -326,7 +397,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  width: min(100%, 17rem);
+  width: min(100%, 20rem);
   min-height: 3.25rem;
   padding: 0.8rem 1rem 0.8rem 1.25rem;
   border: 1px solid var(--color-gold-dark);
@@ -357,6 +428,20 @@ a {
   outline: 0.1875rem solid var(--color-blue);
   outline-offset: 0.1875rem;
   box-shadow: 0 0 0 0.375rem var(--color-gold-light);
+}
+
+.secondary-action {
+  font-size: 0.85rem;
+  text-underline-offset: 0.2em;
+}
+
+.secondary-action:hover {
+  color: var(--color-gold-dark);
+}
+
+.secondary-action:focus-visible {
+  outline: 0.1875rem solid var(--color-blue);
+  outline-offset: 0.25rem;
 }
 
 ::selection {
@@ -432,7 +517,11 @@ a {
   }
 
   .primary-action {
-    width: min(100%, 17rem);
+    width: min(100%, 20rem);
+  }
+
+  .focus-list {
+    grid-template-columns: 1fr;
   }
 }
 

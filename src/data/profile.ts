@@ -1,7 +1,13 @@
 export interface Profile {
   name: string;
   role: string;
+  introduction: string;
+  practices: string[];
   biography: string[];
+  focusAreas: {
+    title: string;
+    description: string;
+  }[];
   portrait: {
     src: string;
     alt: string;
@@ -11,19 +17,42 @@ export interface Profile {
     url: string;
     accessibleLabel: string;
   };
+  secondaryAction: {
+    label: string;
+    url: string;
+    accessibleLabel: string;
+  };
+  linkedInUrl: string;
 }
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export const profile: Profile = {
   name: "Gabriel Garoz",
-  role: "Staff Software Architect",
+  role: "Software Engineering & Architecture",
+  introduction: "My work spans AI and automation, websites and applications, software architecture, and cloud platforms.",
+  practices: ["AI & Automation", "Websites", "Applications", "Cloud & Platforms"],
   biography: [
-    "I’m Gabriel, a Staff Software Architect with 13+ years in the technology industry. With a foundation in software engineering, my work has evolved toward cloud infrastructure modernization, Kubernetes, Google Cloud, platform engineering, DevOps, and AI-driven automation.",
-    "I’ve contributed to large-scale cloud modernization initiatives for global enterprises, helping design and build the platform foundations behind secure, reliable, cloud-native systems.",
-    "I bring a strategic mindset to engineering and use emerging technologies where they solve real problems.",
-    "My background spans cloud infrastructure, platform engineering, large-scale engineering environments, AI-driven automation, and application development.",
-    "Let’s connect if you’re building cloud-native systems, modernizing infrastructure, or looking for practical platform engineering expertise.",
+    "I’m Gabriel, a software engineer and architect with 13+ years in the technology industry.",
+    "My experience spans application development and large-scale cloud modernization for global enterprises. I bring hands-on engineering experience and architectural thinking to building secure, reliable software systems.",
+  ],
+  focusAreas: [
+    {
+      title: "AI & Automation",
+      description: "Applied AI, integrations, and automation for practical workflows.",
+    },
+    {
+      title: "Websites & Applications",
+      description: "Websites, web applications, customer portals, and integrations.",
+    },
+    {
+      title: "Software Architecture",
+      description: "System design, integrations, and modernization for new and existing software.",
+    },
+    {
+      title: "Cloud & Platforms",
+      description: "Cloud infrastructure, platform engineering, deployment automation, and reliable systems.",
+    },
   ],
   portrait: {
     src: `${basePath}/assets/gabriel-garoz.jpg`,
@@ -34,4 +63,10 @@ export const profile: Profile = {
     url: "https://www.linkedin.com/in/gabrielgaroz/",
     accessibleLabel: "Connect with Gabriel Garoz on LinkedIn",
   },
+  secondaryAction: {
+    label: "Email",
+    url: "mailto:dev@gabrielgaroz.com",
+    accessibleLabel: "Email Gabriel Garoz",
+  },
+  linkedInUrl: "https://www.linkedin.com/in/gabrielgaroz/",
 };
