@@ -151,15 +151,17 @@ a {
 }
 
 .portrait-stage {
+  --portrait-size: 11rem;
+  --portrait-ring-offset: 2rem;
   position: relative;
-  width: 11rem;
-  height: 11rem;
-  margin: clamp(2.25rem, 5vh, 3rem) auto 1.75rem;
+  width: var(--portrait-size);
+  height: var(--portrait-size);
+  margin: clamp(2.25rem, 5vh, 3rem) auto calc(var(--portrait-ring-offset) + 1.25rem);
 }
 
 .portrait-stage::before {
   position: absolute;
-  inset: -2rem;
+  inset: calc(-1 * var(--portrait-ring-offset));
   border: 1px solid rgb(214 166 46 / 25%);
   border-radius: 50%;
   content: "";
@@ -167,15 +169,15 @@ a {
 
 .portrait-stage::after {
   position: absolute;
-  top: -1.95rem;
-  left: 50%;
+  top: 50%;
+  left: calc(-1 * var(--portrait-ring-offset));
   width: 0.35rem;
   height: 0.35rem;
   border-radius: 50%;
   background: var(--color-gold);
-  box-shadow: 0 14.2rem 0 var(--color-gold);
+  box-shadow: calc(var(--portrait-size) + 2 * var(--portrait-ring-offset)) 0 0 var(--color-gold);
   content: "";
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .portrait-orbit {
@@ -204,10 +206,11 @@ a {
 }
 
 .profile-discipline {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
   color: var(--color-gold-light);
   font-size: 0.63rem;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
 }
 
 .profile-header h1 {
@@ -403,14 +406,8 @@ a {
   }
 
   .portrait-stage {
-    width: 9rem;
-    height: 9rem;
+    --portrait-size: 9rem;
     margin-top: 2.5rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .portrait-stage::after {
-    box-shadow: 0 12.2rem 0 var(--color-gold);
   }
 
   .profile-header h1 {
