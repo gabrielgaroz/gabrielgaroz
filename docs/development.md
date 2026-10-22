@@ -51,6 +51,22 @@ When validating changes, check both routes, use the switch in both directions,
 and confirm that requesting `/` with a Spanish `Accept-Language` header still
 returns English. Check `dist/index.html` and `dist/es/index.html` after building.
 
+## Mobile rendering
+
+Page backgrounds and the decorative grid scroll with the document instead of
+remaining fixed to the viewport. This avoids mixing fixed and scrolling
+background layers during native scrolling.
+
+At widths up to `48rem`, and on devices whose primary pointer is coarse and
+cannot hover, the masked grid and large card shadow are disabled to further
+reduce painting work. Desktop pointer devices above this breakpoint retain the
+grid and shadow. These rules apply to both languages through the shared stylesheet.
+
+Keep scrolling native: avoid adding JavaScript scroll handlers or restoring
+fixed backgrounds to the mobile rules. When changing decorative effects, check
+both languages at phone, tablet, and desktop widths, including the longer
+Spanish page, and inspect scrolling on a physical mobile device when available.
+
 ## Analytics
 
 PostHog is loaded only in production builds that define `PUBLIC_POSTHOG_KEY`.

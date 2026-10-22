@@ -34,14 +34,14 @@ body {
   min-height: 100%;
   margin: 0;
   color: var(--color-blue);
-  background: var(--page-gradient) fixed;
+  background: var(--page-gradient);
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 body::before {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -1;
   background-image:
@@ -49,6 +49,7 @@ body::before {
     linear-gradient(90deg, rgb(242 235 221 / 4%) 1px, transparent 1px);
   background-size: 4rem 4rem;
   content: "";
+  pointer-events: none;
   mask-image: linear-gradient(to bottom, black, transparent 85%);
 }
 
@@ -447,6 +448,17 @@ a {
 ::selection {
   color: var(--color-blue);
   background: var(--color-gold-light);
+}
+
+/* Reduce decorative painting work on narrow or touch screens. */
+@media (max-width: 48rem), (hover: none) and (pointer: coarse) {
+  body::before {
+    content: none;
+  }
+
+  .profile-card {
+    box-shadow: none;
+  }
 }
 
 @media (max-width: 48rem) {
